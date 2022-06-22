@@ -1,0 +1,21 @@
+<title>Destination</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+
+<div id='types'>
+  <span class='header'>Types:</span>
+  <label><input type='checkbox' id='campaigns'>Campaigns</input></label>
+  <label><input type='checkbox' id='destinations' checked>Destinations</input></label>
+  <label><input type='checkbox' id='dungeons'>Dungeons</input></label>
+  <label><input type='checkbox' id='pve'>PvE</input></label>
+  <label><input type='checkbox' id='pvp'>PvP</input></label>
+  <label><input type='checkbox' id='raids'>Raids</input></label>
+</div>
+<button>Generate</button>
+<h1 id='result'></h1>
+
+<script type='module'>
+  import * as view from './src/view.js'
+  view.setup()
+</script>

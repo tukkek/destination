@@ -1,0 +1,13 @@
+body{
+  text-align:center;
+}
+#types{
+  font-family:monospace;
+}
+.header{
+  font-weight:bold;
+}
+button{
+  margin-top:1em;
+  width:100%;
+}
