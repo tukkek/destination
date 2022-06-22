@@ -5,15 +5,16 @@
 
 <div id='types'>
   <span class='header'>Types:</span>
-  <label><input type='checkbox' id='campaigns'>Campaigns</input></label>
-  <label><input type='checkbox' id='destinations' checked>Destinations</input></label>
-  <label><input type='checkbox' id='dungeons'>Dungeons</input></label>
-  <label><input type='checkbox' id='pve'>PvE</input></label>
-  <label><input type='checkbox' id='pvp'>PvP</input></label>
-  <label><input type='checkbox' id='raids'>Raids</input></label>
+  <template id='category'>
+    <label><input type='checkbox'><span></span></label>
+  </template>
 </div>
 <button>Generate</button>
-<h1 id='result'></h1>
+<div id='result'>
+  <h1 class='title'></h1>
+  <h2 class='details'></h2>
+  <ol class='landings'></ol>
+</div>
 
 <script type='module'>
   import * as view from './src/view.js'

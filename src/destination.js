@@ -7,62 +7,50 @@ class Destination{
   }
   
   toString(){return this.name}
-  
-  travel(){
-    let plan=[this.name]
-    if(this.landings.length) plan.push(rpg.pick(this.landings))
-    return plan
-  }
 }
 
 class Category{
-  constructor(type,id,destinations){
+  constructor(type,destinations){
     this.type=type
-    this.id=id
     this.destinations=destinations
   }
 }
 
-var destinations=new Category('Destination','destinations',[
-  new Destination('European Dead Zone',[]),
-  new Destination('Nessus',[]),
-  new Destination('Dreaming City',[]),
-  new Destination('The Moon',[]),
-  new Destination('Cosmodrome',[]),
-  new Destination('Europa',[]),
+export var pve=new Category('PvE',[
+  new Destination('Vanguard'),
 ])
 
-var campaigns=new Category('Campaign','campaigns',[
-  new Destination('Beyond light'),
-  new Destination('Forsaken'),
-])
-
-var dungeons=new Category('Dungeon','dungeons',[
-  new Destination('Prophecy'),
-])
- 
-var raids=new Category('Raid','raids',[
-  new Destination('Vault of glass'),
-])
- 
-var pve=new Category('PvE','pve',[
-  new Destination('Strikes'),
+export var pvp=new Category('PvP',[
+  new Destination('Crucible'),
   new Destination('Gambit'),
 ])
 
-var pvp=new Category('PvP','pvp',[
-  new Destination('Crucible'),
-  new Destination('Iron banner'),
-  new Destination('Trial of Osiris'),
+export var legends=new Category('Legends',[
+  new Destination('Prophecy'),
+  new Destination('Vault of glass'),
+])
+ 
+export var destinations=new Category('Destination',[
+  new Destination('Cosmodrome',
+    ['Fallen SABER',"The devil's lair",'The disgraced','The steppes','Skywatch']),
+  new Destination('Dreaming City',['Awakening','Divalian mists']),
+  new Destination('Eternity',['Dares of eternity','Treasure hoard']),
+  new Destination('European Dead Zone',
+    ['Lake of shadows','Sulken isles','The arms dealer','The gulch',
+    'The sludge','Trostland','Winding cove']),
+  new Destination('Nessus',
+    ["Artifact's edge",'Exodus black','Exodus crash','Insight terminus','Inverted spire',
+    'The cistern',"Watcher's grave"]),
+  new Destination('The Moon',['Sanctuary',"Sorrow's harbor"]),
 ])
 
-var categories=[destinations,campaigns,dungeons,raids,pve,pvp]
+export var campaigns=new Category('Campaign',[
+  new Destination('The witch queen'),
+])
+
+export var categories=[pve,pvp,legends,destinations,campaigns]
 
 export function generate(){
-  let types=categories.filter(c=>document.querySelector('#'+c.id).checked)
-  let t=rpg.pick(types)
-  let plan=[t.type]
-  plan.push(...rpg.pick(t.destinations).travel())
-  return plan
+  let types=categories.filter(c=>document.querySelector('#'+c.type).checked)
+  return types.length&&rpg.pick(rpg.pick(types).destinations)
 }
-

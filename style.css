@@ -4,10 +4,25 @@ body{
 #types{
   font-family:monospace;
 }
+#types input{
+  margin-left:1em;
+}
 .header{
   font-weight:bold;
 }
 button{
   margin-top:1em;
   width:100%;
+}
+#result{
+  display:inline-block;
+}
+#result .details{
+  font-family:monospace;
+}
+#result .landings{
+  display: inline-block;
+}
+#result .landings li{
+  text-align: left;
 }
